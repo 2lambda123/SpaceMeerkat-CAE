@@ -12,12 +12,12 @@ import torch
 import pandas as pd
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-import pickle
 
 from spacemerlin.data_loading import FITSCubeDataset
 from spacemerlin.models import Autoencoder
 from spacemerlin.utils import EXAMPLE_CHECKPOINT_PATH, EXAMPLE_PCA_PATH, \
     DEFAULT_BOUNDARY
+import fickling
 
 
 def run(model_path=EXAMPLE_CHECKPOINT_PATH, data_path="examples",
@@ -47,7 +47,7 @@ def run(model_path=EXAMPLE_CHECKPOINT_PATH, data_path="examples",
     all_names = np.hstack(all_names)
 
     with open(pca_path, 'rb') as f:
-        pca_model = pickle.load(f)
+        pca_model = fickling.load(f)
 
     # Load the PCA routine and transform the 3D latent data for making
     # predictions of circularity
